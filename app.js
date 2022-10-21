@@ -296,27 +296,34 @@
 // console.log(calculateCube(5));
 
 // isVowel
-// function isVowel(charater){    
+// function isVowel(charater){     
 //     let AEIOU = ["a","e","i","o","u"];
+//     //store the argument inside The Input
 //     let  input = charater.toLowerCase();
-//      if (AEIOU.includes(input)=== true){
+//     //check the condition if the array is contain the element that is converted to lowercase
+//     //Array method : Array.includes('elemnt') will return true or false  
+//      if (AEIOU.includes(input) === true){
 //          return true;
 //        } else{
 //      return false;
 //       }
 //      }
-//  console.log(isVowel('a'))
+//  console.log(isVowel('A'));
 
 // getTwo Lengths 
 // function getTwoLengths(param1,param2){
 //     return [param1.length, param2.length]
 // };
+// //calling the funticon inside the console.log the result is the return inthe funtion
 // console.log(getTwoLengths("Hank", "Hippopopalous"));
+
 
 //getMutipleLengths;
 
 // function getMultipleLengths(numberArray){
+//   //create a array to contain the length of every single element of the input Array;
 //   let newArray = []
+//   //loops throgh the array to find the element and push the lenght of every single element to the new Array
 //   numberArray.forEach(element => {
 //    newArray.push(element.length)
 //   });
@@ -324,32 +331,50 @@
 // }
 // console.log(getMultipleLengths(["hello", "what", "is", "up", "dude"]));
 
+//getMultipleLengths
+// function getMultipleLengths(strings){
+//     const output = [];
+//     for(let string of strings){
+//         output.push(string.length);
+//     }
+//     return output;
+// }
 
 //MaxOfThree
 
+function maxOfThree(a,b,c){
+    if (a >= b && a >=c){ 
+         if (a === b && a > c) { //
+            return a;
+        } else if(a === c && a > b ){
+            return a;
+         }else if (a > b && a > c){
+            return a;
+        } else if (a === b && b === c) {
+            return "they are equal"
+        } 
+    } else if(b >= a && b >= c){
+          if (b === c && b >a ){
+            return b;
+          } else if(b>a && b >c){
+            return b;
+          }     
+    } else if(c > a && c > b){
+      return c; 
+    }  
+}
+console.log(maxOfThree(17, 11, 17)); 
+//maxOfThree
 // function maxOfThree(a,b,c){
-//     if (a >= b && a >=c){ 
-//          if (a === b && a > c) { //
-//             return a;
-//         } else if(a === c && a > b ){
-//             return a;
-//          }else if (a > b && a > c){
-//             return a;
-//         } else if (a === b && b === c) {
-//             return "they are equal"
-//         } 
-//     } else if(b >= a && b >= c){
-//           if (b === c && b >a ){
-//             return b;
-//           } else if(b>a && b >c){
-//             return b;
-//           }     
-//     } else if(c > a && c > b){
-       
-//             return c; 
-//     }  
+//     let max = a;
+//     if(b > max) max = b;
+//     if(c > max) max = c;
+//     return max;
 // }
-// console.log(maxOfThree(17, 11, 17)); 
+// a , b , c
+// max = a;
+// max < b -> max = b;
+// max < c -> max = c;
 
 // printLongestWord
 
@@ -359,19 +384,126 @@ function printLongestWord(inputArray){
     inputArray.forEach(element => {
     newArray.push(element.length);
     });
- //Math.max()to find the bigest length in the newArray that we created;
-   let highestLength =  Math.max(...newArray);
- //let find the result with filter or for loops
+//Math.max()to find the bigest length in the newArray that we created;
+   let bighestLength =  Math.max(...newArray);
+//let find the result with filter or for loops
                   /*filter */
-    let result = inputArray.filter(element => 
-        element.length === highestLength //the unique condition help me take out the element has the bigest length
-        );                                  
-    return result.toString();
-                  /*for loops*/
-    // for (let i = 0; i <inputArray.length;i++){
-    //     if (inputArray[i].length === highestLength){
-    //         return inputArray[i];
-    //     }
-    // }
+    // let result = inputArray.filter(element => 
+    //     element.length === highestLength //the unique condition help me take out the element has the bigest length
+    //     );                                  
+    // return result.toString();
+                  /*for loops*/ 
+         /*looking for every single element inside the array and compare it to higestLengt con dition */
+    for (let i = 0; i <inputArray.length;i++){
+        if (inputArray[i].length === bighestLength){
+            return inputArray[i];
+        }
+    }
 }
 console.log(printLongestWord(["BoJack", "Princess", "Diane", "a", "Max", "Peanutbutter", "big", "Todd", "MicroCenterUniverse"]));
+
+                        /*Object*/
+//Make a user object
+// class User {
+//     constructor(name, email, age, purchased = []){
+//         this.name = name;
+//         this.name = email;
+//         this.age = age;
+//         this.purchased = purchased
+//     }  
+// }
+
+const user ={
+    name: "Nhan",
+    email: "@gmail.com",
+    age: 19,
+    purchased:[]
+}
+
+//update the user
+
+user.email = "@yahhoo.com";
+user.age++;
+                    
+//Adding keys and values
+
+user.location = "Denver";
+
+//Shopaholic;
+
+user.purchased.push("carbohydrates" );
+user.purchased.push("peace of mind" );
+user.purchased.push("Merino jodhpurs" );
+console.log(user.purchased[2]);
+
+//Object-within-object
+
+user.friend = {
+    name: "Nhi",
+    age: 26,
+    location: "Da Nang",
+    purchased: []
+}
+
+console.log(user.friend.name);
+console.log(user.friend.location);
+
+user.friend.age = 55;
+
+user.friend.purchased.push("The One Ring");
+user.friend.purchased.push("The Latte");
+console.log(user.friend.purchased[1]);
+//Loops
+user.purchased.forEach(e => {
+    console.log(e);
+})
+
+user.friend.purchased.forEach(echild =>{
+    console.log(echild)
+})
+
+// function updateUser(){
+//     user.age +=1;
+//     user.name  = user.name.toUpperCase(); 
+// }
+// updateUser();
+
+function oldAndLoud(person){
+   person.age +=1;
+   person.name = person.name.toUpperCase();
+}
+oldAndLoud(user);
+
+
+                  /*Cat Combinator */
+// Mama Cat
+const cat1 = {
+    name:"Kit",
+    breed:"VietNamese",
+    age: 5
+}
+
+//Papa cat
+const cat2 ={
+    name: "Kat",
+    breed: "VietNamese",
+    age: 5
+}
+
+//Combine Cats
+
+function combineCat(mama, papa){
+   return {
+    name: mama.name+papa.name,
+    age: 1,
+    breed: mama.breed+'-'+papa.breed
+   }
+}
+
+// combineCat(combineCat(cat1,cat2),combineCat(cat1,cat2));
+
+//Cat brain bender
+
+console.log(combineCat(combineCat(combineCat(cat1,cat2),combineCat(cat1,cat2)),combineCat(combineCat(cat1,cat2),combineCat(cat1,cat2))));
+
+
