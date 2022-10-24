@@ -290,7 +290,7 @@
 
 // //Calculate cube
 // function calculateCube(number){
-//    return number*25;
+//    return number*number*number;
 // }
 
 // console.log(calculateCube(5));
@@ -309,6 +309,15 @@
 //       }
 //      }
 //  console.log(isVowel('A'));
+
+
+function isVowel(char){
+  const arr = ['a', 'e', 'i', 'o', 'u']
+
+  return arr.includes(char.toLowerCase())
+}
+console.log(isVowel('B'));
+
 
 // getTwo Lengths 
 // function getTwoLengths(param1,param2){
@@ -342,28 +351,40 @@
 
 //MaxOfThree
 
-function maxOfThree(a,b,c){
-    if (a >= b && a >=c){ 
-         if (a === b && a > c) { //
-            return a;
-        } else if(a === c && a > b ){
-            return a;
-         }else if (a > b && a > c){
-            return a;
-        } else if (a === b && b === c) {
-            return "they are equal"
-        } 
-    } else if(b >= a && b >= c){
-          if (b === c && b >a ){
-            return b;
-          } else if(b>a && b >c){
-            return b;
-          }     
-    } else if(c > a && c > b){
-      return c; 
-    }  
+// function maxOfThree(a,b,c){
+//     if (a >= b && a >=c){ 
+//          if (a === b && a > c) { //
+//             return a;
+//         } else if(a === c && a > b ){
+//             return a;
+//          }else if (a > b && a > c){
+//             return a;
+//         } else if (a === b && b === c) {
+//             return "they are equal"
+//         } 
+//     } else if(b >= a && b >= c){
+//           if (b === c && b >a ){
+//             return b;
+//           } else if(b>a && b >c){
+//             return b;
+//           }     
+//     } else if(c > a && c > b){
+//       return c; 
+//     }  
+// }
+
+function maxOfThree(...arg){
+   arg.sort((a,b) => { return a - b});
+   return arg[arg.length-1];
 }
-console.log(maxOfThree(17, 11, 17)); 
+console.log(maxOfThree(19, 11, 17)); 
+
+// const maxOfThree = (num1, num2, num3) => {
+//     const arr = [num1, num2, num3]
+//     arr.sort((a,b) => {
+//       return b - a
+//     })
+
 //maxOfThree
 // function maxOfThree(a,b,c){
 //     let max = a;
@@ -378,29 +399,57 @@ console.log(maxOfThree(17, 11, 17));
 
 // printLongestWord
 
-function printLongestWord(inputArray){
- //let find all the length of the input Array
-    let newArray = []
-    inputArray.forEach(element => {
-    newArray.push(element.length);
-    });
-//Math.max()to find the bigest length in the newArray that we created;
-   let bighestLength =  Math.max(...newArray);
-//let find the result with filter or for loops
-                  /*filter */
-    // let result = inputArray.filter(element => 
-    //     element.length === highestLength //the unique condition help me take out the element has the bigest length
-    //     );                                  
-    // return result.toString();
-                  /*for loops*/ 
-         /*looking for every single element inside the array and compare it to higestLengt con dition */
-    for (let i = 0; i <inputArray.length;i++){
-        if (inputArray[i].length === bighestLength){
-            return inputArray[i];
-        }
+// function printLongestWord(inputArray){
+//  //let find all the length of the input Array
+//     let newArray = []
+//     inputArray.forEach(element => {
+//     newArray.push(element.length);
+//     });
+// //Math.max()to find the bigest length in the newArray that we created;
+//    let bighestLength =  Math.max(...newArray);
+// //let find the result with filter or for loops
+//                   /*filter */
+//     // let result = inputArray.filter(element => 
+//     //     element.length === highestLength //the unique condition help me take out the element has the bigest length
+//     //     );                                  
+//     // return result.toString();
+//                   /*for loops*/ 
+//          /*looking for every single element inside the array and compare it to higestLengt con dition */
+//     for (let i = 0; i <inputArray.length;i++){
+//         if (inputArray[i].length === bighestLength){
+//             return inputArray[i];
+//         }
+//     }
+// }
+
+//printLongestWord
+function printLongestWord(words){
+    let longest = words[0];
+    for(let i = 1; i < words.length; i++){
+        if(words[i].length > longest.length) longest = words[i];
     }
+    return longest;
 }
-console.log(printLongestWord(["BoJack", "Princess", "Diane", "a", "Max", "Peanutbutter", "big", "Todd", "MicroCenterUniverse"]));
+console.log(printLongestWord(["BoJack", "Princess", "Diane", "a", "Max","MicroCenterUnivse", "Peanutbutter", "big", "Todd", "MicroCenterUniverse"]))
+//
+
+// const printLongestWord = (arr) => {
+//     let ans = arr[0]
+//     let length = arr[0].length
+//     arr.forEach((str) => {
+//       prevLength = length
+//       length = Math.max(ans.length, str.length)
+//       if(prevLength !== length){
+//         ans = str
+//       }    
+//     })
+//     return ans
+//   }
+
+
+
+
+console.log(["BoJack", "Princess", "Diane", "a", "Max", "Peanutbutter","MicroCenterUnivewse", "big", "Todd", "MicroCenterUniverse"].sort((a,b) => a.length - b.length));
 
                         /*Object*/
 //Make a user object
